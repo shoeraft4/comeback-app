@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Comeback: die Community für Verletzte auf dem Weg zurück in den Sport.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M26 9.5A12 12 0 1 0 26 22.5' fill='none' stroke='%23CF5B23' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>Comeback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a single phone-sized app column, framed on desktop, edge-to-edge feel on phones. Scoreboard numerals for rehab weeks. */
+:root {
+  --bg: #F3F0EE;
+  --surface: #FFFFFF;
+  --surface-2: #F7F4F2;
+  --line: #E6DFDA;
+  --fg: #1F1A17;
+  --muted: #6F655E;
+  --accent: #CF5B23;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #FBE7DC;
+  --ok: #2F7D4F;
+  --ok-soft: #E1F1E7;
+  --verify: #2B5DA8;
+  --verify-soft: #E2EBF8;
+  --stage: #E7E2DE;
+  --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #171412; --surface: #221E1B; --surface-2: #2A2522; --line: #3A332E; --fg: #F2ECE7; --muted: #A99D94;
+  --accent: #E8743C; --accent-ink: #1A1210; --accent-soft: #3D2418; --ok: #6CC08E; --ok-soft: #1E3327;
+  --verify: #82A8E6; --verify-soft: #1F2A3D; --stage: #0F0D0C; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #171412; --surface: #221E1B; --surface-2: #2A2522; --line: #3A332E; --fg: #F2ECE7; --muted: #A99D94;
+  --accent: #E8743C; --accent-ink: #1A1210; --accent-soft: #3D2418; --ok: #6CC08E; --ok-soft: #1E3327;
+  --verify: #82A8E6; --verify-soft: #1F2A3D; --stage: #0F0D0C; color-scheme: dark }
+
+html, body { height: 100%; }
+body { background: var(--stage); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px; box-sizing: border-box; }
+* { box-sizing: border-box; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.stage { height: 100%; display: flex; justify-content: center; align-items: center; }
+.phone { width: 100%; max-width: 400px; height: 100%; max-height: 840px; background: var(--bg); border-radius: 34px; overflow: hidden;
+  display: flex; flex-direction: column; box-shadow: 0 0 0 10px var(--fg), 0 30px 60px rgba(0,0,0,.25); position: relative; }
+@media (max-width: 480px) { body { background: var(--bg); padding-block: 0; } .phone { border-radius: 0; box-shadow: none; max-height: none; } }
+
+.top { padding: 18px 20px 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: 17px; }
+.ring { width: 22px; height: 22px; border-radius: 50%; border: 4px solid var(--accent); border-right-color: transparent; transform: rotate(-30deg); }
+.icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; position: relative; }
+.dot { position: absolute; top: 6px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+.scroll { flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+.scroll > *, .ob > * { flex-shrink: 0; }
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--surface); padding: 8px 6px calc(10px + env(safe-area-inset-bottom, 0px)); }
+.tab { background: none; border: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 600; color: var(--muted); padding: 4px 0; }
+.tab[aria-current="true"] { color: var(--accent); }
+.tab svg { width: 22px; height: 22px; }
+
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+.eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.row { display: flex; align-items: center; gap: 10px; }
+.between { justify-content: space-between; }
+
+/* Hero week counter */
+.week { display: flex; align-items: flex-end; gap: 12px; }
+.week .num { font-family: var(--display); font-weight: 800; font-size: 76px; line-height: .82; color: var(--accent); font-variant-numeric: tabular-nums; }
+.week .lbl { font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.05; text-transform: uppercase; letter-spacing: .02em; }
+.phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.ph { height: 8px; border-radius: 4px; background: var(--line); position: relative; overflow: hidden; }
+.ph.done { background: var(--accent); }
+.ph .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
+.ph-labels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; font-size: 11px; color: var(--muted); }
+.ph-labels .cur { color: var(--fg); font-weight: 700; }
+
+.milestones { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ms { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: start; padding-bottom: 12px; position: relative; }
+.ms:not(:last-child)::before { content: ""; position: absolute; left: 10px; top: 20px; bottom: 0; width: 2px; background: var(--line); }
+.ms.done:not(:last-child)::before { background: var(--accent); }
+.ms .b { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); display: grid; place-items: center; position: relative; z-index: 1; }
+.ms.done .b { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.ms.next .b { border-color: var(--accent); }
+.ms .t { font-weight: 600; }
+.ms .w { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.btn { border: 0; border-radius: 12px; padding: 13px 16px; font-weight: 700; background: var(--accent); color: var(--accent-ink); width: 100%; }
+.btn.ghost { background: var(--surface-2); color: var(--fg); border: 1px solid var(--line); }
+.btn:disabled { opacity: .45; cursor: default; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: 14px; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip:disabled { opacity: .5; cursor: default; }
+.chip .soon { font-size: 11px; font-weight: 700; color: var(--muted); margin-left: 4px; }
+
+.mood { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.mood button { border: 1px solid var(--line); background: var(--surface-2); border-radius: 10px; padding: 8px 0; font-family: var(--display); font-weight: 700; font-size: 18px; }
+.mood button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.b-mentor { background: var(--accent-soft); color: var(--accent); }
+.b-physio { background: var(--verify-soft); color: var(--verify); }
+.b-phase { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+
+.av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; flex: none; background: var(--surface-2); border: 1px solid var(--line); }
+.av.a1 { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.av.a2 { background: var(--verify-soft); color: var(--verify); border-color: transparent; }
+.av.a3 { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+
+.post { gap: 8px; }
+.post .who { font-weight: 700; }
+.post .meta { font-size: 12.5px; color: var(--muted); }
+.post .body { margin: 0; }
+.actions { display: flex; gap: 8px; }
+.act { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface-2); border-radius: 999px; padding: 5px 12px; font-size: 13px; font-weight: 600; }
+.act[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+.act svg { width: 16px; height: 16px; }
+.answer { border-left: 3px solid var(--verify); padding-left: 10px; font-size: 14px; }
+
+.compose { display: flex; gap: 8px; align-items: flex-end; }
+.compose textarea { flex: 1; min-width: 0; resize: none; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font: inherit; background: var(--surface-2); color: var(--fg); height: 44px; }
+.compose .btn { width: auto; padding: 11px 16px; }
+
+.thumb { aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; position: relative; overflow: hidden; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface-2)); border: 1px solid var(--line); }
+.thumb .play { width: 46px; height: 46px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
+.thumb .dur { position: absolute; right: 8px; bottom: 8px; background: var(--fg); color: var(--bg); font-size: 12px; font-weight: 700; padding: 2px 6px; border-radius: 6px; font-variant-numeric: tabular-nums; }
+.thumb .ph-tag { position: absolute; left: 8px; top: 8px; }
+.hscroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+.hscroll .chip { flex: none; }
+
+.criteria { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.criteria li { display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: 14px; align-items: center; }
+.criteria .val { font-family: var(--display); font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; }
+.criteria .ok { color: var(--ok); }
+.meter { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.meter span { display: block; height: 100%; background: var(--accent); }
+.note { font-size: 12px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
+
+.story { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.story .eyebrow { color: var(--accent); }
+.story .q { font-family: var(--display); font-size: 24px; font-weight: 700; line-height: 1.1; }
+
+.path { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.step { text-align: center; font-size: 12px; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.step .c { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; background: var(--surface); font-family: var(--display); font-weight: 700; }
+.step.done .c { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.step.cur .c { border-color: var(--accent); color: var(--accent); }
+.step.cur { color: var(--fg); }
+
+.badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.bdg { border: 1px solid var(--line); border-radius: 12px; padding: 10px 6px; text-align: center; font-size: 12px; font-weight: 600; background: var(--surface-2); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.bdg .n { font-family: var(--display); font-weight: 800; font-size: 22px; color: var(--accent); line-height: 1; }
+.bdg.locked { opacity: .45; }
+.toggle { appearance: none; width: 44px; height: 26px; border-radius: 13px; background: var(--line); position: relative; cursor: pointer; flex: none; transition: background .2s; }
+.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--surface); transition: transform .2s; }
+.toggle:checked { background: var(--accent); }
+.toggle:checked::after { transform: translateX(18px); }
+
+/* Onboarding */
+.ob { flex: 1; overflow-y: auto; padding: 8px 24px 24px; display: flex; flex-direction: column; gap: 18px; }
+.ob h1 { font-family: var(--display); font-weight: 800; font-size: 40px; line-height: .95; text-transform: uppercase; letter-spacing: .01em; }
+.ob h1 em { font-style: normal; color: var(--accent); }
+.ob .foot { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.dots { display: flex; gap: 6px; }
+.dots i { height: 4px; flex: 1; border-radius: 2px; background: var(--line); }
+.dots i.on { background: var(--accent); }
+.range { width: 100%; accent-color: var(--accent); }
+.bigval { font-family: var(--display); font-weight: 800; font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.welcome-art { display: grid; place-items: center; padding: 24px 0 8px; }
+.welcome-art .ring { width: 140px; height: 140px; border-width: 18px; }
+
+.toast { position: absolute; left: 20px; right: 20px; bottom: 86px; background: var(--fg); color: var(--bg); padding: 12px 14px; border-radius: 12px; font-weight: 600; font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { .toast { animation: up .25s ease-out; } @keyframes up { from { transform: translateY(8px); opacity: .6; } } }
+</style>
+
+</head>
+<body>
+<div class="stage"><div class="phone" id="app"></div></div>
+
+<script>
+const I = {
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
+  group: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 4 1.8 4.5 4.5"/></svg>',
+  video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>',
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>',
+  bell: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>',
+  up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+  save: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
+  check: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>',
+  play: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg>',
+  shield: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>'
+};
+
+const PHASES = [
+  { id: 1, name: 'Schutz', range: 'OP bis W6', from: 0, to: 6 },
+  { id: 2, name: 'Aufbau', range: 'W6 bis W12', from: 6, to: 12 },
+  { id: 3, name: 'Belastung', range: 'M3 bis M6', from: 12, to: 26 },
+  { id: 4, name: 'Return to Play', range: 'ab M6', from: 26, to: 40 }
+];
+const phaseOf = w => PHASES.find(p => w < p.to) || PHASES[3];
+
+const MILESTONES = [
+  { w: 0, t: 'Tag 1 nach der OP' },
+  { w: 2, t: 'Ohne Krücken gehen' },
+  { w: 6, t: 'Volle Streckung, Velo-Ergometer' },
+  { w: 12, t: 'Erster Lauf auf dem Laufband' },
+  { w: 20, t: 'Sprünge und Richtungswechsel' },
+  { w: 30, t: 'Erstes Mannschaftstraining' },
+  { w: 38, t: 'Erstes Spiel' }
+];
+
+const S = {
+  screen: 'onboard', step: 0,
+  injury: 'Kreuzband (ACL)', sport: 'Handball', week: 8,
+  tab: 'heute', mood: null, checkedIn: false,
+  videoFilter: 'Meine Phase', saved: new Set(['v2']), toast: '', publicDetails: true,
+  posts: [
+    { id: 'p1', who: 'Lea M.', av: 'LM', cls: 'a3', role: null, week: 7, time: 'vor 25 Min.', text: 'Ist es normal, dass das Knie nach dem Velo-Ergometer am Abend wieder anschwillt? Mein nächster Physio-Termin ist erst in 10 Tagen.', up: 6, voted: false, replies: 4,
+      answer: { who: 'Luca B.', role: 'mentor', text: 'Kenne ich genau, bei mir war das in Woche 7 bis 9 auch so. Kühlen und hochlagern hat geholfen. Ist die Schwellung am Morgen noch da, ruf kurz deine Physio an.' } },
+    { id: 'p2', who: 'Luca B.', av: 'LB', cls: 'a1', role: 'mentor', week: null, time: 'vor 2 Std.', text: 'Willkommen an die 5 Neuen in Woche 6 bis 12! Ich war genau da vor 18 Monaten. Die Wochen 8 bis 10 fühlen sich zäh an, das ist das Reha-Loch. Es geht vorbei. Fragt mich alles.', up: 23, voted: true, replies: 7 },
+    { id: 'p3', who: 'Jonas R.', av: 'JR', cls: '', role: null, week: 9, time: 'gestern', text: 'Meilenstein: Heute 120° Beugung geschafft! Vor drei Wochen waren es 95°.', up: 31, voted: false, replies: 9, milestone: true }
+  ]
+};
+
+const VIDEOS = [
+  { id: 'v1', title: 'Meine Woche 8: was mir durchs Reha-Loch geholfen hat', by: 'Luca B.', dur: '2:40', phase: 2, verified: true, up: 142 },
+  { id: 'v2', title: 'So habe ich meine Übungen in den Alltag gebracht', by: 'Anna S.', dur: '3:15', phase: 2, verified: true, up: 98 },
+  { id: 'v3', title: 'Mein Weg zurück: Woche 1 bis Spiel 1', by: 'Luca B.', dur: '6:02', phase: 4, verified: true, up: 311, story: true },
+  { id: 'v4', title: 'Mein Warm-up seit dem Comeback', by: 'Anna S.', dur: '4:30', phase: 0, verified: true, up: 205, prevention: true },
+  { id: 'v5', title: 'Erster Lauf: meine Erfahrung', by: 'Jonas R.', dur: '2:05', phase: 3, verified: false, up: 77 },
+  { id: 'v6', title: 'Die ersten Tage nach der OP', by: 'Lea M.', dur: '1:50', phase: 1, verified: false, up: 64 }
+];
+
+const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const app = document.getElementById('app');
+
+function topBar() {
+  return `<div class="top"><div class="brand"><span class="ring" aria-hidden="true"></span>Comeback</div>
+    <button class="icon-btn" aria-label="Benachrichtigungen" data-a="toast" data-msg="Luca hat auf deine Frage geantwortet">${I.bell}<span class="dot"></span></button></div>`;
+}
+
+/* ---------- Onboarding ---------- */
+function onboarding() {
+  const st = S.step;
+  const dots = `<div class="dots">${[1,2,3].map(i => `<i class="${st >= i ? 'on' : ''}"></i>`).join('')}</div>`;
+  let body = '';
+  if (st === 0) {
+    body = `<div class="welcome-art"><span class="ring" aria-hidden="true"></span></div>
+      <h1>Comeback ist ein <em>Teamsport.</em></h1>
+      <p class="muted">Finde Leute in genau deiner Reha-Woche, lerne von denen, die es zurück auf den Platz geschafft haben, und mach deinen Fortschritt sichtbar.</p>
+      <div class="foot"><button class="btn" data-a="next">Mein Comeback starten</button>
+      <p class="small muted" style="text-align:center;margin:0">Beta · Einladung über deinen Verein oder einen Mentor</p></div>`;
+  } else if (st === 1) {
+    const inj = ['Kreuzband (ACL)', 'Meniskus', 'Sprunggelenk', 'Hamstring', 'Schulter'];
+    body = `${dots}<div><div class="eyebrow">Schritt 1 von 3</div><h1>Was ist <em>passiert?</em></h1></div>
+      <div class="chips">${inj.map((x, i) => `<button class="chip" ${i ? 'disabled' : ''} aria-pressed="${S.injury === x}" data-a="injury" data-v="${x}">${x}${i ? '<span class="soon">bald</span>' : ''}</button>`).join('')}</div>
+      <p class="small muted">In der Beta starten wir mit Kreuzband. Weitere Verletzungen folgen.</p>
+      <div class="foot"><button class="btn" data-a="next" ${S.injury ? '' : 'disabled'}>Weiter</button></div>`;
+  } else if (st === 2) {
+    const sports = ['Fussball', 'Handball', 'Unihockey', 'Basketball', 'Ski', 'Anderes'];
+    body = `${dots}<div><div class="eyebrow">Schritt 2 von 3</div><h1>Dein Sport und deine <em>Reha-Woche</em></h1></div>
+      <div class="chips">${sports.map(x => `<button class="chip" aria-pressed="${S.sport === x}" data-a="sport" data-v="${x}">${x}</button>`).join('')}</div>
+      <div class="card"><div class="row between"><span class="eyebrow">Wochen seit OP</span><span class="badge b-phase">Phase ${phaseOf(S.week).id}: ${phaseOf(S.week).name}</span></div>
+      <div class="bigval" id="wkval">${S.week}</div>
+      <label for="wk" class="small muted">Woche einstellen</label>
+      <input class="range" id="wk" type="range" min="0" max="40" value="${S.week}"></div>
+      <p class="small muted">Gesundheitsangaben sind freiwillig. Du entscheidest später, was andere sehen.</p>
+      <div class="foot"><button class="btn" data-a="next">Passende Gruppe finden</button></div>`;
+  } else {
+    const p = phaseOf(S.week);
+    body = `${dots}<div><div class="eyebrow">Schritt 3 von 3</div><h1>Das ist <em>dein Team.</em></h1></div>
+      <div class="card"><div class="eyebrow">Deine Gruppe</div>
+        <h2 style="font-family:var(--display);font-size:26px;text-transform:uppercase">Kreuzband · ${p.range}</h2>
+        <p class="small muted" style="margin:0">128 Mitglieder in Phase ${p.id}, 14 gerade online</p></div>
+      <div class="card"><div class="eyebrow">Reha-Buddies in deiner Woche</div>
+        ${[['LM', 'a3', 'Lea M.', 'Fussball · Woche 7'], ['JR', '', 'Jonas R.', 'Handball · Woche 9']].map(b => `
+        <div class="row between"><div class="row"><div class="av ${b[1]}">${b[0]}</div><div><div style="font-weight:700">${b[2]}</div><div class="small muted">${b[3]}</div></div></div>
+        <button class="act" data-a="buddy" aria-pressed="false">Verbinden</button></div>`).join('')}</div>
+      <div class="card"><div class="row"><div class="av a1">LB</div><div><div class="row" style="gap:6px"><b>Luca B.</b><span class="badge b-mentor">Mentor</span></div>
+        <div class="small muted">Kreuzband 2024, seit 6 Monaten zurück im Spiel</div></div></div>
+        <p class="body" style="margin:0">«Hey Sara, willkommen! Ich begleite deine Gruppe. Stell dich kurz vor, wir sind für dich da.»</p></div>
+      <div class="foot"><button class="btn" data-a="finish">Zur Gruppe</button></div>`;
+  }
+  app.innerHTML = `${st ? `<div class="top"><button class="icon-btn" aria-label="Zurück" data-a="back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="brand"><span class="ring" aria-hidden="true"></span>Comeback</div><span style="width:36px"></span></div>` : topBar()}<div class="ob">${body}</div>`;
+  const r = document.getElementById('wk');
+  if (r) r.addEventListener('input', e => { S.week = +e.target.value; document.getElementById('wkval').textContent = S.week; const b = e.target.parentElement.querySelector('.badge'); const p = phaseOf(S.week); b.textContent = `Phase ${p.id}: ${p.name}`; });
+}
+
+/* ---------- Tabs ---------- */
+function heute() {
+  const w = S.week, p = phaseOf(w);
+  const bars = PHASES.map(ph => {
+    if (w >= ph.to) return '<div class="ph done"></div>';
+    if (w >= ph.from) return `<div class="ph"><span class="fill" style="width:${Math.round((w - ph.from) / (ph.to - ph.from) * 100)}%"></span></div>`;
+    return '<div class="ph"></div>';
+  }).join('');
+  const nextIdx = MILESTONES.findIndex(m => m.w > w);
+  const ms = MILESTONES.map((m, i) => `<li class="ms ${m.w <= w ? 'done' : ''} ${i === nextIdx ? 'next' : ''}"><span class="b">${m.w <= w ? I.check : ''}</span>
+    <span class="t">${m.t}${i === nextIdx ? `<div class="small muted" style="font-weight:500">noch ${m.w - w} Wochen</div>` : ''}</span><span class="w">W${m.w}</span></li>`).join('');
+  return `
+  <div class="card" style="gap:14px">
+    <div class="week"><span class="num">${w}</span><span class="lbl">Woche<br><span class="muted" style="font-size:15px">Tag ${w * 7 + 2} · ${esc(S.injury)}</span></span></div>
+    <div class="phases">${bars}</div>
+    <div class="ph-labels">${PHASES.map(ph => `<span class="${ph.id === p.id ? 'cur' : ''}">${ph.name}</span>`).join('')}</div>
+  </div>
+  <div class="card">
+    <div class="row between"><span class="eyebrow">Wöchentlicher Check-in</span><span class="badge b-mentor">Streak: ${S.checkedIn ? 8 : 7} Wochen</span></div>
+    ${S.checkedIn ? `<p style="margin:0">Danke! Dein Check-in ist in der Gruppe. Lea und Jonas sind diese Woche auch dabei.</p>` : `
+    <p style="margin:0;font-weight:600">Wie fühlt sich dein Knie diese Woche an?</p>
+    <div class="mood">${[1,2,3,4,5].map(n => `<button aria-pressed="${S.mood === n}" data-a="mood" data-v="${n}" aria-label="Stimmung ${n} von 5">${n}</button>`).join('')}</div>
+    <div class="row between small muted"><span>schwierig</span><span>richtig gut</span></div>
+    <button class="btn" data-a="checkin" ${S.mood ? '' : 'disabled'}>In der Gruppe teilen</button>`}
+  </div>
+  <div class="card"><span class="eyebrow">Meilensteine bis zum ersten Spiel</span><ol class="milestones">${ms}</ol></div>
+  <div class="card story">
+    <span class="eyebrow">Comeback der Woche</span>
+    <div class="q">«In Woche 9 wollte ich aufhören. Heute stehe ich wieder im Tor.»</div>
+    <div class="row"><div class="av a1">AS</div><div><b>Anna S.</b><div class="small" style="opacity:.75">Unihockey · 11 Monate bis zum ersten Spiel</div></div></div>
+    <button class="btn" data-a="tab" data-v="videos">Story ansehen</button>
+  </div>
+  <div class="card">
+    <span class="eyebrow">Return-to-Sport-Kriterien</span>
+    <ul class="criteria">
+      <li><span>Volle Streckung</span><span class="val ok">0° ${I.check}</span></li>
+      <li><span>Beugung</span><span class="val">115° / 135°</span><span class="meter"><span style="width:85%"></span></span></li>
+      <li><span>Kraft-Symmetrie (Quadrizeps)</span><span class="val">62% / 90%</span><span class="meter"><span style="width:69%"></span></span></li>
+      <li><span>Hop-Test</span><span class="val muted">ab Phase 3</span></li>
+    </ul>
+    <div class="note">Werte trägst du nach deinem Physio-Termin selbst ein. Comeback ersetzt keine medizinische Beratung.</div>
+  </div>`;
+}
+
+function gruppe() {
+  const p = phaseOf(S.week);
+  const posts = S.posts.map(x => `
+  <article class="card post">
+    <div class="row"><div class="av ${x.cls}">${x.av}</div><div style="min-width:0">
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="who">${esc(x.who)}</span>
+      ${x.role === 'mentor' ? '<span class="badge b-mentor">Mentor</span>' : ''}${x.week != null ? `<span class="badge b-phase">Woche ${x.week}</span>` : ''}${x.milestone ? '<span class="badge b-mentor">Meilenstein</span>' : ''}</div>
+      <div class="meta">${x.time}</div></div></div>
+    <p class="body">${esc(x.text)}</p>
+    ${x.answer ? `<div class="answer"><div class="row" style="gap:6px;margin-bottom:2px"><b>${x.answer.who}</b><span class="badge b-mentor">Mentor · zurück im Sport</span></div>${x.answer.text}</div>` : ''}
+    <div class="actions"><button class="act" aria-pressed="${x.voted}" data-a="vote" data-v="${x.id}">${I.up}${x.up}</button>
+    <button class="act" data-a="toast" data-msg="Antworten öffnen sich in der nächsten Version">${I.chat}${x.replies}</button></div>
+  </article>`).join('');
+  return `
+  <div><div class="eyebrow">Deine Gruppe · Phase ${p.id}</div>
+  <h1 style="font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1">Kreuzband · ${p.range}</h1>
+  <p class="small muted" style="margin:4px 0 0">128 Mitglieder · 14 online · 3 Mentoren</p></div>
+  <div class="hscroll">${['Alle', 'Fragen', 'Meilensteine', 'Mentoren'].map((c, i) => `<button class="chip" aria-pressed="${i === 0}">${c}</button>`).join('')}</div>
+  <form class="compose" id="compose"><label for="msg" class="small" style="position:absolute;left:-9999px">Beitrag schreiben</label>
+    <textarea id="msg" placeholder="Frage oder Fortschritt teilen…"></textarea><button class="btn" type="submit">Posten</button></form>
+  ${posts}`;
+}
+
+function videos() {
+  const p = phaseOf(S.week);
+  const filters = ['Meine Phase', 'Alle', 'Prävention', 'Comeback-Stories', 'Gespeichert'];
+  const list = VIDEOS.filter(v => {
+    const f = S.videoFilter;
+    if (f === 'Meine Phase') return v.phase === p.id;
+    if (f === 'Prävention') return v.prevention;
+    if (f === 'Comeback-Stories') return v.story;
+    if (f === 'Gespeichert') return S.saved.has(v.id);
+    return true;
+  });
+  return `
+  <div><div class="eyebrow">Comeback-Stories</div><h1 style="font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1">Erfahrungen für Woche ${S.week}</h1></div>
+  <div class="hscroll">${filters.map(f => `<button class="chip" aria-pressed="${S.videoFilter === f}" data-a="vf" data-v="${f}">${f}</button>`).join('')}</div>
+  ${list.length ? list.map(v => `
+  <article class="card">
+    <button class="thumb" style="border:0;padding:0" data-a="toast" data-msg="Video wird abgespielt (Prototyp)" aria-label="${v.title} abspielen">
+      <span class="play">${I.play}</span><span class="dur">${v.dur}</span>
+      <span class="ph-tag badge b-phase" style="background:var(--surface)">${v.phase ? 'Phase ' + v.phase : 'Prävention'}</span></button>
+    <div><b>${v.title}</b><div class="row small muted" style="gap:6px;margin-top:4px;flex-wrap:wrap">${v.by}
+      ${v.verified ? '<span class="badge b-mentor">Mentor</span>' : '<span class="badge b-phase">Community</span>'}</div></div>
+    <div class="actions"><span class="act">${I.up}${v.up}</span>
+      <button class="act" aria-pressed="${S.saved.has(v.id)}" data-a="save" data-v="${v.id}">${I.save}${S.saved.has(v.id) ? 'Gespeichert' : 'Speichern'}</button>
+</div>
+  </article>`).join('') : `<div class="card"><b>Noch nichts hier</b><p class="small muted" style="margin:0">Speichere Videos, um sie offline griffbereit zu haben.</p></div>`}`;
+}
+
+function profil() {
+  const p = phaseOf(S.week);
+  const steps = [['Verletzt', 'done'], ['In Reha', 'cur'], ['Zurück im Sport', ''], ['Mentor', '']];
+  return `
+  <div class="card"><div class="row"><div class="av a1" style="width:56px;height:56px;font-size:19px">SK</div>
+    <div><h2 style="font-family:var(--display);font-size:26px;text-transform:uppercase;line-height:1">Sara K.</h2>
+    <div class="small muted">${esc(S.sport)} · ${esc(S.injury)} · Woche ${S.week}</div></div></div></div>
+  <div class="card"><span class="eyebrow">Dein Weg</span>
+    <div class="path">${steps.map((s, i) => `<div class="step ${s[1]}"><span class="c">${s[1] === 'done' ? I.check : i + 1}</span>${s[0]}</div>`).join('')}</div>
+    <p class="small muted" style="margin:0">Nach deinem Comeback kannst du Mentorin werden und neue Mitglieder begleiten.</p></div>
+  <div class="card"><span class="eyebrow">Badges</span>
+    <div class="badges">
+      <div class="bdg"><span class="n">8</span>Wochen dran</div>
+      <div class="bdg"><span class="n">${S.checkedIn ? 8 : 7}</span>Wochen-Streak</div>
+      <div class="bdg"><span class="n">12</span>Upvotes</div>
+      <div class="bdg locked"><span class="n">W12</span>Erster Lauf</div>
+      <div class="bdg locked"><span class="n">W30</span>Training</div>
+      <div class="bdg locked"><span class="n">W38</span>Mentor-Badge</div></div></div>
+  <div class="card"><span class="eyebrow">Reha-Buddies</span>
+    <div class="row"><div class="av a3">LM</div><div class="av">JR</div><div class="av a1">LB</div><span class="small muted">2 Buddies · 1 Mentor</span></div></div>
+  <div class="card"><span class="eyebrow">Privatsphäre</span>
+    <div class="row between"><label for="pub" style="font-weight:600">Verletzung und Reha-Woche öffentlich zeigen</label>
+    <input type="checkbox" class="toggle" id="pub" ${S.publicDetails ? 'checked' : ''} data-a="pub"></div>
+    <p class="small muted" style="margin:0">Gesundheitsdaten werden nur mit deiner ausdrücklichen Einwilligung gespeichert (nDSG). Echtnamen sind nicht nötig.</p></div>
+  <button class="btn ghost" data-a="restart">Onboarding neu starten</button>`;
+}
+
+function main() {
+  const views = { heute, gruppe, videos, profil };
+  const tabs = [['heute', 'Heute', I.home], ['gruppe', 'Gruppe', I.group], ['videos', 'Videos', I.video], ['profil', 'Profil', I.user]];
+  app.innerHTML = `${topBar()}<main class="scroll" id="scroll">${views[S.tab]()}</main>
+    ${S.toast ? `<div class="toast" role="status">${esc(S.toast)}</div>` : ''}
+    <nav class="tabs" aria-label="Hauptnavigation">${tabs.map(t => `<button class="tab" data-a="tab" data-v="${t[0]}" aria-current="${S.tab === t[0]}">${t[2]}${t[1]}</button>`).join('')}</nav>`;
+  const f = document.getElementById('compose');
+  if (f) f.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = document.getElementById('msg').value.trim();
+    if (!v) return;
+    S.posts.unshift({ id: 'u' + Date.now(), who: 'Sara K.', av: 'SK', cls: 'a1', role: null, week: S.week, time: 'gerade eben', text: v, up: 0, voted: false, replies: 0 });
+    flash('Gepostet. Luca wird benachrichtigt, falls niemand antwortet.');
+  });
+}
+
+let tt;
+function flash(msg) { S.toast = msg; render(); clearTimeout(tt); tt = setTimeout(() => { S.toast = ''; render(true); }, 2600); }
+function render(keepScroll) {
+  const sc = document.getElementById('scroll'); const top = sc ? sc.scrollTop : 0;
+  S.screen === 'onboard' ? onboarding() : main();
+  const n = document.getElementById('scroll'); if (n && keepScroll) n.scrollTop = top;
+}
+
+app.addEventListener('click', e => {
+  const b = e.target.closest('[data-a]'); if (!b) return;
+  const a = b.dataset.a, v = b.dataset.v;
+  if (a === 'next') { S.step++; render(); }
+  else if (a === 'back') { S.step = Math.max(0, S.step - 1); render(); }
+  else if (a === 'injury') { S.injury = v; render(); }
+  else if (a === 'sport') { S.sport = v; render(); }
+  else if (a === 'buddy') { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); b.textContent = on ? 'Verbunden' : 'Verbinden'; }
+  else if (a === 'finish') { S.screen = 'app'; S.tab = 'gruppe'; render(); }
+  else if (a === 'tab') { S.tab = v; if (v === 'videos' && b.classList.contains('btn')) S.videoFilter = 'Comeback-Stories'; render(); }
+  else if (a === 'mood') { S.mood = +v; render(true); }
+  else if (a === 'checkin') {
+    S.checkedIn = true;
+    S.posts.unshift({ id: 'c' + Date.now(), who: 'Sara K.', av: 'SK', cls: 'a1', role: null, week: S.week, time: 'gerade eben', text: `Check-in Woche ${S.week}: Knie-Gefühl ${S.mood} von 5.`, up: 0, voted: false, replies: 0 });
+    flash('Check-in in der Gruppe geteilt');
+  }
+  else if (a === 'vote') { const p = S.posts.find(x => x.id === v); p.voted = !p.voted; p.up += p.voted ? 1 : -1; render(true); }
+  else if (a === 'save') { S.saved.has(v) ? S.saved.delete(v) : S.saved.add(v); render(true); }
+  else if (a === 'vf') { S.videoFilter = v; render(true); }
+  else if (a === 'pub') { S.publicDetails = b.checked; }
+  else if (a === 'toast') { flash(b.dataset.msg); }
+  else if (a === 'restart') { S.screen = 'onboard'; S.step = 0; S.tab = 'heute'; render(); }
+});
+
+render();
+</script>
+
+</body>
+</html>
