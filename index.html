@@ -4,182 +4,255 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Comeback: die Community für Verletzte auf dem Weg zurück in den Sport.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M26 9.5A12 12 0 1 0 26 22.5' fill='none' stroke='%23CF5B23' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M26 9.5A12 12 0 1 0 26 22.5' fill='none' stroke='%23F2621F' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <title>Comeback</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: a single phone-sized app column, framed on desktop, edge-to-edge feel on phones. Scoreboard numerals for rehab weeks. */
+/* Layout: one phone-sized app column; sporty italic condensed numerals, bright orange energy, floating pill nav. */
 :root {
-  --bg: #F3F0EE;
+  --bg: #F5F3F1;
   --surface: #FFFFFF;
-  --surface-2: #F7F4F2;
-  --line: #E6DFDA;
-  --fg: #1F1A17;
-  --muted: #6F655E;
-  --accent: #CF5B23;
+  --surface-2: #F1EEEB;
+  --line: #E7E2DD;
+  --fg: #17130F;
+  --muted: #776D66;
+  --accent: #F2621F;
+  --accent-2: #D9461A;
   --accent-ink: #FFFFFF;
-  --accent-soft: #FBE7DC;
-  --ok: #2F7D4F;
-  --ok-soft: #E1F1E7;
-  --verify: #2B5DA8;
-  --verify-soft: #E2EBF8;
-  --stage: #E7E2DE;
+  --accent-soft: #FFE9DE;
+  --sun: #FFC23D;
+  --sun-soft: #FFF3D6;
+  --go: #1C9E68;
+  --go-soft: #DDF4E9;
+  --sky: #3F7BE0;
+  --sky-soft: #E2ECFB;
+  --plum: #8B4FD8;
+  --plum-soft: #EFE5FB;
+  --night: #17130F;
+  --night-fg: #FFF8F3;
+  --stage: #E4DFDA;
   --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
   --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #171412; --surface: #221E1B; --surface-2: #2A2522; --line: #3A332E; --fg: #F2ECE7; --muted: #A99D94;
-  --accent: #E8743C; --accent-ink: #1A1210; --accent-soft: #3D2418; --ok: #6CC08E; --ok-soft: #1E3327;
-  --verify: #82A8E6; --verify-soft: #1F2A3D; --stage: #0F0D0C; color-scheme: dark } }
+  --bg: #141110; --surface: #1F1B19; --surface-2: #2A2522; --line: #352F2B; --fg: #F6F1EC; --muted: #A79C94;
+  --accent: #FF7234; --accent-2: #E8521E; --accent-ink: #FFFFFF; --accent-soft: #3A2116;
+  --sun: #FFC94F; --sun-soft: #3A3018; --go: #4CC991; --go-soft: #17322A; --sky: #7DA6F0; --sky-soft: #1B2840;
+  --plum: #B48AF0; --plum-soft: #2C2140; --night: #0B0908; --night-fg: #FFF8F3; --stage: #0B0908; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #171412; --surface: #221E1B; --surface-2: #2A2522; --line: #3A332E; --fg: #F2ECE7; --muted: #A99D94;
-  --accent: #E8743C; --accent-ink: #1A1210; --accent-soft: #3D2418; --ok: #6CC08E; --ok-soft: #1E3327;
-  --verify: #82A8E6; --verify-soft: #1F2A3D; --stage: #0F0D0C; color-scheme: dark }
+  --bg: #141110; --surface: #1F1B19; --surface-2: #2A2522; --line: #352F2B; --fg: #F6F1EC; --muted: #A79C94;
+  --accent: #FF7234; --accent-2: #E8521E; --accent-ink: #FFFFFF; --accent-soft: #3A2116;
+  --sun: #FFC94F; --sun-soft: #3A3018; --go: #4CC991; --go-soft: #17322A; --sky: #7DA6F0; --sky-soft: #1B2840;
+  --plum: #B48AF0; --plum-soft: #2C2140; --night: #0B0908; --night-fg: #FFF8F3; --stage: #0B0908; color-scheme: dark }
 
 html, body { height: 100%; }
-body { background: var(--stage); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.45;
+body { background: var(--stage); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.42;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px; box-sizing: border-box; }
 * { box-sizing: border-box; }
-button { font: inherit; color: inherit; cursor: pointer; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
 button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
 
 .stage { height: 100%; display: flex; justify-content: center; align-items: center; }
-.phone { width: 100%; max-width: 400px; height: 100%; max-height: 840px; background: var(--bg); border-radius: 34px; overflow: hidden;
+.phone { width: 100%; max-width: 400px; height: 100%; max-height: 840px; background: var(--bg); border-radius: 36px; overflow: hidden;
   display: flex; flex-direction: column; box-shadow: 0 0 0 10px var(--fg), 0 30px 60px rgba(0,0,0,.25); position: relative; }
 @media (max-width: 480px) { body { background: var(--bg); padding-block: 0; } .phone { border-radius: 0; box-shadow: none; max-height: none; } }
 
-.top { padding: 18px 20px 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: 17px; }
-.ring { width: 22px; height: 22px; border-radius: 50%; border: 4px solid var(--accent); border-right-color: transparent; transform: rotate(-30deg); }
-.icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; position: relative; }
-.dot { position: absolute; top: 6px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-
-.scroll { flex: 1; overflow-y: auto; padding: 4px 20px 24px; display: flex; flex-direction: column; gap: 16px; }
-.scroll > *, .ob > * { flex-shrink: 0; }
-.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--surface); padding: 8px 6px calc(10px + env(safe-area-inset-bottom, 0px)); }
-.tab { background: none; border: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 600; color: var(--muted); padding: 4px 0; }
-.tab[aria-current="true"] { color: var(--accent); }
-.tab svg { width: 22px; height: 22px; }
-
-h1, h2, h3 { margin: 0; text-wrap: balance; }
-.eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.disp { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; letter-spacing: .005em; line-height: .9; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .muted { color: var(--muted); }
 .small { font-size: 13px; }
 .row { display: flex; align-items: center; gap: 10px; }
 .between { justify-content: space-between; }
 
-/* Hero week counter */
-.week { display: flex; align-items: flex-end; gap: 12px; }
-.week .num { font-family: var(--display); font-weight: 800; font-size: 76px; line-height: .82; color: var(--accent); font-variant-numeric: tabular-nums; }
-.week .lbl { font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.05; text-transform: uppercase; letter-spacing: .02em; }
-.phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-.ph { height: 8px; border-radius: 4px; background: var(--line); position: relative; overflow: hidden; }
-.ph.done { background: var(--accent); }
-.ph .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
-.ph-labels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; font-size: 11px; color: var(--muted); }
-.ph-labels .cur { color: var(--fg); font-weight: 700; }
+/* Top bar */
+.top { padding: 16px 18px 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-shrink: 0; }
+.hello { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.hello b { display: block; font-size: 17px; line-height: 1.1; }
+.hello span { font-size: 12.5px; color: var(--muted); }
+.streak { display: inline-flex; align-items: center; gap: 4px; background: var(--sun-soft); color: var(--fg); font-weight: 800; font-family: var(--display); font-style: italic; font-size: 18px; padding: 4px 10px 4px 8px; border-radius: 999px; }
+.streak svg { width: 18px; height: 18px; color: var(--accent); }
+.icon-btn { width: 38px; height: 38px; border-radius: 50%; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center; position: relative; flex: none; }
+.icon-btn svg { width: 18px; height: 18px; }
+.dot { position: absolute; top: 7px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
 
-.milestones { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.ms { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: start; padding-bottom: 12px; position: relative; }
-.ms:not(:last-child)::before { content: ""; position: absolute; left: 10px; top: 20px; bottom: 0; width: 2px; background: var(--line); }
-.ms.done:not(:last-child)::before { background: var(--accent); }
-.ms .b { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); display: grid; place-items: center; position: relative; z-index: 1; }
-.ms.done .b { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.ms.next .b { border-color: var(--accent); }
-.ms .t { font-weight: 600; }
-.ms .w { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.scroll { flex: 1; overflow-y: auto; padding: 6px 16px 112px; display: flex; flex-direction: column; gap: 14px; }
+.scroll > *, .ob > * { flex-shrink: 0; }
+.card { background: var(--surface); border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
 
-.btn { border: 0; border-radius: 12px; padding: 13px 16px; font-weight: 700; background: var(--accent); color: var(--accent-ink); width: 100%; }
-.btn.ghost { background: var(--surface-2); color: var(--fg); border: 1px solid var(--line); }
-.btn:disabled { opacity: .45; cursor: default; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: 14px; }
-.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-.chip:disabled { opacity: .5; cursor: default; }
-.chip .soon { font-size: 11px; font-weight: 700; color: var(--muted); margin-left: 4px; }
+/* Avatars */
+.av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13.5px; flex: none; color: #fff; position: relative; }
+.av.sm { width: 30px; height: 30px; font-size: 11px; }
+.av.lg { width: 60px; height: 60px; font-size: 20px; }
+.c1 { background: var(--accent); } .c2 { background: var(--sky); } .c3 { background: var(--go); } .c4 { background: var(--plum); } .c5 { background: #C2843A; }
+.online::after { content: ""; position: absolute; right: -1px; bottom: -1px; width: 11px; height: 11px; border-radius: 50%; background: var(--go); border: 2px solid var(--surface); }
+.stack { display: flex; }
+.stack .av { border: 2.5px solid var(--surface); }
+.stack .av + .av { margin-left: -10px; }
 
-.mood { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.mood button { border: 1px solid var(--line); background: var(--surface-2); border-radius: 10px; padding: 8px 0; font-family: var(--display); font-weight: 700; font-size: 18px; }
-.mood button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+/* Hero */
+.hero { background: linear-gradient(140deg, var(--accent) 0%, var(--accent-2) 100%); color: var(--accent-ink); border-radius: 26px; padding: 18px; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; right: -60px; top: -70px; width: 220px; height: 220px; border-radius: 50%; border: 26px solid rgba(255,255,255,.12); }
+.hero .eyebrow { color: rgba(255,255,255,.8); }
+.hero .big { font-size: 76px; }
+.hero .big small { font-size: 30px; margin-right: 4px; }
+.hero .sub { font-size: 14px; font-weight: 600; opacity: .92; }
+.ring { width: 96px; height: 96px; position: relative; flex: none; }
+.ring svg { width: 96px; height: 96px; transform: rotate(-90deg); }
+.ring .lbl { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
+.ring .lbl b { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 26px; line-height: 1; display: block; }
+.ring .lbl span { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .85; display: block; }
+.segs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; position: relative; }
+.seg { display: flex; flex-direction: column; gap: 6px; font-size: 11px; font-weight: 600; opacity: .7; }
+.seg i { height: 6px; border-radius: 3px; background: rgba(255,255,255,.28); overflow: hidden; display: block; }
+.seg i b { display: block; height: 100%; background: #fff; border-radius: 3px; }
+.seg.cur { opacity: 1; }
+.seg.done i { background: #fff; }
 
-.badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
-.b-mentor { background: var(--accent-soft); color: var(--accent); }
-.b-physio { background: var(--verify-soft); color: var(--verify); }
-.b-phase { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+/* Crew strip */
+.crew { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; }
+.crew p { font-size: 13.5px; line-height: 1.25; }
+.crew p b { display: block; font-size: 14.5px; }
+.pill-btn { background: var(--fg); color: var(--bg); font-weight: 700; font-size: 13px; padding: 9px 14px; border-radius: 999px; white-space: nowrap; }
 
-.av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; flex: none; background: var(--surface-2); border: 1px solid var(--line); }
-.av.a1 { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
-.av.a2 { background: var(--verify-soft); color: var(--verify); border-color: transparent; }
-.av.a3 { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+/* Check-in */
+.mood { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.mood button { aspect-ratio: 1; border-radius: 16px; background: var(--surface-2); font-family: var(--display); font-style: italic; font-weight: 800; font-size: 24px; transition: transform .15s; }
+.mood button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); transform: scale(1.06); }
+.btn { border-radius: 16px; padding: 14px 16px; font-weight: 700; background: var(--accent); color: var(--accent-ink); width: 100%; font-size: 15px; }
+.btn:disabled { opacity: .4; cursor: default; }
+.btn.dark { background: var(--fg); color: var(--bg); }
+.done-note { display: flex; gap: 12px; align-items: center; background: var(--go-soft); border-radius: 16px; padding: 12px 14px; }
+.done-note svg { width: 28px; height: 28px; color: var(--go); flex: none; }
 
-.post { gap: 8px; }
+/* Next milestone */
+.track { display: flex; align-items: center; gap: 0; margin: 4px 2px 0; }
+.track .n { width: 14px; height: 14px; border-radius: 50%; background: var(--line); flex: none; display: grid; place-items: center; }
+.track .n.done { background: var(--accent); }
+.track .n.next { width: 22px; height: 22px; background: var(--surface); border: 4px solid var(--accent); }
+.track .l { flex: 1; height: 4px; background: var(--line); }
+.track .l.done { background: var(--accent); }
+.tlabels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.ms-big { font-size: 34px; }
+
+/* Story card */
+.story { background: var(--night); color: var(--night-fg); }
+.story .eyebrow { color: var(--sun); }
+.story .q { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 27px; line-height: 1.02; text-transform: uppercase; }
+
+/* Group */
+.g-head h1 { font-size: 40px; }
+.g-head .meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.live { display: inline-flex; align-items: center; gap: 5px; color: var(--go); font-weight: 700; }
+.live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--go); }
+.stories { display: flex; gap: 12px; overflow-x: auto; padding: 2px 2px 4px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+.st { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; flex: none; width: 62px; }
+.st .rg { padding: 3px; border-radius: 50%; background: conic-gradient(var(--sun), var(--accent), var(--accent-2), var(--sun)); }
+.st .rg.seen { background: var(--line); }
+.st .rg .av { width: 54px; height: 54px; font-size: 17px; border: 3px solid var(--bg); }
+.st .add { width: 60px; height: 60px; border-radius: 50%; border: 2px dashed var(--muted); display: grid; place-items: center; color: var(--muted); }
+.st .add svg { width: 22px; height: 22px; }
+.st .tag { font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-top: -3px; }
+.chips { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
+.chip { border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 13.5px; background: var(--surface); white-space: nowrap; flex: none; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.chip:disabled { opacity: .45; cursor: default; }
+.chip .soon { font-size: 10.5px; font-weight: 700; color: var(--muted); margin-left: 4px; }
+
+.compose { display: flex; gap: 8px; align-items: center; background: var(--surface); border-radius: 18px; padding: 8px 8px 8px 10px; }
+.compose textarea { flex: 1; min-width: 0; resize: none; border: 0; background: transparent; color: var(--fg); font: inherit; height: 38px; padding: 9px 4px; }
+.compose textarea:focus { outline: none; }
+.compose .send { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; flex: none; }
+.compose .send svg { width: 18px; height: 18px; }
+
+.post { gap: 10px; }
 .post .who { font-weight: 700; }
 .post .meta { font-size: 12.5px; color: var(--muted); }
-.post .body { margin: 0; }
-.actions { display: flex; gap: 8px; }
-.act { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface-2); border-radius: 999px; padding: 5px 12px; font-size: 13px; font-weight: 600; }
-.act[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
-.act svg { width: 16px; height: 16px; }
-.answer { border-left: 3px solid var(--verify); padding-left: 10px; font-size: 14px; }
+.badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.b-mentor { background: var(--accent); color: var(--accent-ink); }
+.b-week { background: var(--surface-2); color: var(--muted); }
+.b-sun { background: var(--sun); color: #17130F; }
+.reply { background: var(--accent-soft); border-radius: 16px; padding: 12px; display: flex; gap: 10px; }
+.reply p { font-size: 14px; }
+.reply .rn { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; flex-wrap: wrap; }
+.reacts { display: flex; gap: 6px; flex-wrap: wrap; }
+.re { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 6px 11px; font-size: 13px; font-weight: 700; background: var(--surface-2); }
+.re svg { width: 15px; height: 15px; }
+.re[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+.mile { background: var(--sun-soft); border-radius: 18px; padding: 14px; display: flex; align-items: center; gap: 14px; }
+.mile .v { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 52px; line-height: .85; color: var(--fg); }
+.mile p { font-weight: 700; font-size: 14px; line-height: 1.25; }
 
-.compose { display: flex; gap: 8px; align-items: flex-end; }
-.compose textarea { flex: 1; min-width: 0; resize: none; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font: inherit; background: var(--surface-2); color: var(--fg); height: 44px; }
-.compose .btn { width: auto; padding: 11px 16px; }
+/* Stories / videos */
+.feat { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 16 / 10; max-width: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: #fff; text-align: left; width: 100%; }
+.feat .bgw { position: absolute; inset: 0; }
+.feat .wm { position: absolute; right: 10px; top: -6px; font-family: var(--display); font-style: italic; font-weight: 800; font-size: 110px; line-height: 1; color: rgba(255,255,255,.12); }
+.feat > *:not(.bgw):not(.wm):not(.playc) { position: relative; }
+.feat h2 { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 28px; line-height: .95; text-transform: uppercase; }
+.playc { width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--accent); display: grid; place-items: center; position: absolute; right: 16px; bottom: 16px; }
+.playc svg { width: 18px; height: 18px; margin-left: 2px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.reel { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 9 / 13; max-width: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 10px; color: #fff; text-align: left; }
+.reel .bgw { position: absolute; inset: 0; }
+.reel > *:not(.bgw) { position: relative; }
+.reel .wm { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 54px; line-height: .9; color: rgba(255,255,255,.95); }
+.reel h3 { font-size: 14px; line-height: 1.2; font-weight: 700; }
+.reel .by { display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; margin-top: 6px; }
+.dur { background: rgba(0,0,0,.35); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.g-a { background: linear-gradient(160deg, #FF8A3D, #E23E16); }
+.g-b { background: linear-gradient(160deg, #3F7BE0, #2A3F9E); }
+.g-c { background: linear-gradient(160deg, #1FB079, #0F6D53); }
+.g-d { background: linear-gradient(160deg, #A06BE6, #5B2EA6); }
+.g-e { background: linear-gradient(160deg, #FFB23D, #E86A1A); }
+.g-f { background: linear-gradient(160deg, #3B3330, #17130F); }
+.saved-dot { position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,.3); display: grid; place-items: center; }
+.saved-dot svg { width: 15px; height: 15px; }
 
-.thumb { aspect-ratio: 16 / 9; max-width: 100%; border-radius: 12px; position: relative; overflow: hidden; display: grid; place-items: center;
-  background: linear-gradient(135deg, var(--accent-soft), var(--surface-2)); border: 1px solid var(--line); }
-.thumb .play { width: 46px; height: 46px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
-.thumb .dur { position: absolute; right: 8px; bottom: 8px; background: var(--fg); color: var(--bg); font-size: 12px; font-weight: 700; padding: 2px 6px; border-radius: 6px; font-variant-numeric: tabular-nums; }
-.thumb .ph-tag { position: absolute; left: 8px; top: 8px; }
-.hscroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
-.hscroll .chip { flex: none; }
-
-.criteria { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.criteria li { display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: 14px; align-items: center; }
-.criteria .val { font-family: var(--display); font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; }
-.criteria .ok { color: var(--ok); }
-.meter { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
-.meter span { display: block; height: 100%; background: var(--accent); }
-.note { font-size: 12px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
-
-.story { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-.story .eyebrow { color: var(--accent); }
-.story .q { font-family: var(--display); font-size: 24px; font-weight: 700; line-height: 1.1; }
-
+/* Profile */
 .path { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.step { text-align: center; font-size: 12px; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.step .c { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; background: var(--surface); font-family: var(--display); font-weight: 700; }
-.step.done .c { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.step.cur .c { border-color: var(--accent); color: var(--accent); }
+.step { text-align: center; font-size: 11.5px; font-weight: 700; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.step .c { width: 34px; height: 34px; border-radius: 50%; background: var(--surface-2); display: grid; place-items: center; font-family: var(--display); font-style: italic; font-weight: 800; font-size: 17px; }
+.step.done .c { background: var(--accent); color: var(--accent-ink); }
+.step.cur .c { background: var(--fg); color: var(--bg); }
 .step.cur { color: var(--fg); }
-
 .badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.bdg { border: 1px solid var(--line); border-radius: 12px; padding: 10px 6px; text-align: center; font-size: 12px; font-weight: 600; background: var(--surface-2); display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.bdg .n { font-family: var(--display); font-weight: 800; font-size: 22px; color: var(--accent); line-height: 1; }
+.bdg { border-radius: 16px; padding: 12px 6px; text-align: center; font-size: 11.5px; font-weight: 700; background: var(--surface-2); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.bdg .n { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 26px; color: var(--accent); line-height: 1; }
 .bdg.locked { opacity: .45; }
-.toggle { appearance: none; width: 44px; height: 26px; border-radius: 13px; background: var(--line); position: relative; cursor: pointer; flex: none; transition: background .2s; }
-.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--surface); transition: transform .2s; }
+.toggle { appearance: none; width: 46px; height: 28px; border-radius: 14px; background: var(--line); position: relative; cursor: pointer; flex: none; transition: background .2s; margin: 0; }
+.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: transform .2s; }
 .toggle:checked { background: var(--accent); }
 .toggle:checked::after { transform: translateX(18px); }
 
+/* Bottom nav */
+.nav { position: absolute; left: 14px; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); background: var(--night); border-radius: 26px; display: grid; grid-template-columns: 1fr 1fr 64px 1fr 1fr; align-items: center; padding: 8px 6px; box-shadow: 0 12px 30px rgba(0,0,0,.22); }
+.tab { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10.5px; font-weight: 700; color: rgba(255,248,243,.55); padding: 4px 0; }
+.tab svg { width: 22px; height: 22px; }
+.tab[aria-current="true"] { color: var(--night-fg); }
+.tab[aria-current="true"] svg { color: var(--accent); }
+.fab { width: 54px; height: 54px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; justify-self: center; margin-top: -26px; box-shadow: 0 8px 20px rgba(242,98,31,.45); border: 4px solid var(--bg); }
+.fab svg { width: 24px; height: 24px; }
+
 /* Onboarding */
-.ob { flex: 1; overflow-y: auto; padding: 8px 24px 24px; display: flex; flex-direction: column; gap: 18px; }
-.ob h1 { font-family: var(--display); font-weight: 800; font-size: 40px; line-height: .95; text-transform: uppercase; letter-spacing: .01em; }
-.ob h1 em { font-style: normal; color: var(--accent); }
+.ob { flex: 1; overflow-y: auto; padding: 8px 22px 24px; display: flex; flex-direction: column; gap: 18px; }
+.ob h1 { font-size: 46px; }
+.ob h1 em { font-style: italic; color: var(--accent); }
 .ob .foot { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
 .dots { display: flex; gap: 6px; }
-.dots i { height: 4px; flex: 1; border-radius: 2px; background: var(--line); }
+.dots i { height: 5px; flex: 1; border-radius: 3px; background: var(--line); }
 .dots i.on { background: var(--accent); }
 .range { width: 100%; accent-color: var(--accent); }
-.bigval { font-family: var(--display); font-weight: 800; font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
-.welcome-art { display: grid; place-items: center; padding: 24px 0 8px; }
-.welcome-art .ring { width: 140px; height: 140px; border-width: 18px; }
+.bigval { font-size: 64px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.welcome { border-radius: 28px; background: linear-gradient(150deg, var(--accent), var(--accent-2)); color: #fff; padding: 22px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden; min-height: 230px; justify-content: flex-end; }
+.welcome::before { content: ""; position: absolute; left: -40px; top: -50px; width: 200px; height: 200px; border-radius: 50%; border: 28px solid rgba(255,255,255,.14); border-right-color: transparent; transform: rotate(-30deg); }
+.welcome .stack .av { border-color: var(--accent); }
+.welcome > * { position: relative; }
 
-.toast { position: absolute; left: 20px; right: 20px; bottom: 86px; background: var(--fg); color: var(--bg); padding: 12px 14px; border-radius: 12px; font-weight: 600; font-size: 14px; }
-@media (prefers-reduced-motion: no-preference) { .toast { animation: up .25s ease-out; } @keyframes up { from { transform: translateY(8px); opacity: .6; } } }
+.toast { position: absolute; left: 18px; right: 18px; bottom: 100px; background: var(--fg); color: var(--bg); padding: 12px 14px; border-radius: 14px; font-weight: 600; font-size: 14px; z-index: 5; }
+@media (prefers-reduced-motion: no-preference) { .toast { animation: up .25s ease-out; } @keyframes up { from { transform: translateY(8px); opacity: .6; } } .mood button:active { transform: scale(.94); } }
 </style>
 
 </head>
@@ -187,258 +260,274 @@ h1, h2, h3 { margin: 0; text-wrap: balance; }
 <div class="stage"><div class="phone" id="app"></div></div>
 
 <script>
+const sv = (p, f) => `<svg viewBox="0 0 24 24" fill="${f ? 'currentColor' : 'none'}" stroke="${f ? 'none' : 'currentColor'}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 const I = {
-  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
-  group: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 4 1.8 4.5 4.5"/></svg>',
-  video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>',
-  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>',
-  bell: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>',
-  up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
-  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>',
-  save: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>',
-  check: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>',
-  play: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l12 7-12 7z"/></svg>',
-  shield: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>'
+  home: sv('<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>'),
+  crew: sv('<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c2.3.2 4 1.8 4.5 4.5"/>'),
+  play: sv('<path d="M7 4.5l13 7.5-13 7.5z"/>', 1),
+  stories: sv('<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor"/>'),
+  user: sv('<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>'),
+  plus: sv('<path d="M12 5v14M5 12h14"/>'),
+  bell: sv('<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/>'),
+  flame: sv('<path d="M12 2.5c.8 3 4.8 5.2 4.8 10.2A4.8 4.8 0 0 1 12 17.5a4.8 4.8 0 0 1-4.8-4.8c0-2.3 1.2-3.8 2.3-4.8.1 2 1 3.2 2.1 3.4-.4-3.2-.3-5.8.4-8.8z"/><path d="M12 21.5c-3 0-5-1.6-5-3.5h10c0 1.9-2 3.5-5 3.5z" opacity=".55"/>', 1),
+  send: sv('<path d="M5 12h13M13 6l6 6-6 6"/>'),
+  chat: sv('<path d="M4 5h16v11H9l-5 4z"/>'),
+  heart: sv('<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'),
+  check: sv('<path d="M5 12.5l4.5 4.5L19 7"/>'),
+  checkC: sv('<circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff"/>'),
+  save: sv('<path d="M6 3h12v18l-6-4-6 4z"/>'),
+  back: sv('<path d="M15 5l-7 7 7 7"/>')
 };
 
 const PHASES = [
   { id: 1, name: 'Schutz', range: 'OP bis W6', from: 0, to: 6 },
   { id: 2, name: 'Aufbau', range: 'W6 bis W12', from: 6, to: 12 },
   { id: 3, name: 'Belastung', range: 'M3 bis M6', from: 12, to: 26 },
-  { id: 4, name: 'Return to Play', range: 'ab M6', from: 26, to: 40 }
+  { id: 4, name: 'Return', range: 'ab M6', from: 26, to: 40 }
 ];
 const phaseOf = w => PHASES.find(p => w < p.to) || PHASES[3];
-
 const MILESTONES = [
-  { w: 0, t: 'Tag 1 nach der OP' },
-  { w: 2, t: 'Ohne Krücken gehen' },
-  { w: 6, t: 'Volle Streckung, Velo-Ergometer' },
-  { w: 12, t: 'Erster Lauf auf dem Laufband' },
-  { w: 20, t: 'Sprünge und Richtungswechsel' },
-  { w: 30, t: 'Erstes Mannschaftstraining' },
-  { w: 38, t: 'Erstes Spiel' }
+  { w: 0, t: 'Tag 1 nach der OP' }, { w: 2, t: 'Ohne Krücken gehen' }, { w: 6, t: 'Volle Streckung' },
+  { w: 12, t: 'Erster Lauf' }, { w: 20, t: 'Sprünge und Richtungswechsel' }, { w: 30, t: 'Erstes Mannschaftstraining' }, { w: 38, t: 'Erstes Spiel' }
 ];
 
 const S = {
-  screen: 'onboard', step: 0,
-  injury: 'Kreuzband (ACL)', sport: 'Handball', week: 8,
-  tab: 'heute', mood: null, checkedIn: false,
-  videoFilter: 'Meine Phase', saved: new Set(['v2']), toast: '', publicDetails: true,
+  screen: 'onboard', step: 0, injury: 'Kreuzband (ACL)', sport: 'Handball', week: 8,
+  tab: 'heute', mood: null, checkedIn: false, streak: 7, filter: 'Meine Phase', saved: new Set(['v2']), toast: '', publicDetails: true,
   posts: [
-    { id: 'p1', who: 'Lea M.', av: 'LM', cls: 'a3', role: null, week: 7, time: 'vor 25 Min.', text: 'Ist es normal, dass das Knie nach dem Velo-Ergometer am Abend wieder anschwillt? Mein nächster Physio-Termin ist erst in 10 Tagen.', up: 6, voted: false, replies: 4,
-      answer: { who: 'Luca B.', role: 'mentor', text: 'Kenne ich genau, bei mir war das in Woche 7 bis 9 auch so. Kühlen und hochlagern hat geholfen. Ist die Schwellung am Morgen noch da, ruf kurz deine Physio an.' } },
-    { id: 'p2', who: 'Luca B.', av: 'LB', cls: 'a1', role: 'mentor', week: null, time: 'vor 2 Std.', text: 'Willkommen an die 5 Neuen in Woche 6 bis 12! Ich war genau da vor 18 Monaten. Die Wochen 8 bis 10 fühlen sich zäh an, das ist das Reha-Loch. Es geht vorbei. Fragt mich alles.', up: 23, voted: true, replies: 7 },
-    { id: 'p3', who: 'Jonas R.', av: 'JR', cls: '', role: null, week: 9, time: 'gestern', text: 'Meilenstein: Heute 120° Beugung geschafft! Vor drei Wochen waren es 95°.', up: 31, voted: false, replies: 9, milestone: true }
+    { id: 'p1', who: 'Lea M.', av: 'LM', c: 'c3', week: 7, time: 'vor 25 Min.', text: 'Ist es normal, dass das Knie nach dem Velo-Ergometer am Abend wieder anschwillt? Mein nächster Physio-Termin ist erst in 10 Tagen.',
+      r: { stark: 6, kenn: 11, danke: 2 }, mine: 'kenn',
+      reply: { who: 'Luca B.', av: 'LB', c: 'c1', text: 'Kenne ich genau, bei mir war das in Woche 7 bis 9 auch so. Kühlen und hochlagern hat geholfen. Ist es am Morgen noch da, ruf kurz deine Physio an.' } },
+    { id: 'p2', who: 'Jonas R.', av: 'JR', c: 'c2', week: 9, time: 'vor 1 Std.', milestone: { v: '120°', t: 'Beugung geschafft! Vor drei Wochen waren es noch 95°.' }, text: '',
+      r: { stark: 31, kenn: 4, danke: 0 }, mine: null },
+    { id: 'p3', who: 'Luca B.', av: 'LB', c: 'c1', mentor: true, time: 'vor 2 Std.', text: 'Willkommen an die 5 Neuen in Phase 2! Die Wochen 8 bis 10 fühlen sich zäh an, das ist das Reha-Loch. Es geht vorbei. Fragt mich alles.',
+      r: { stark: 9, kenn: 3, danke: 23 }, mine: 'danke' }
   ]
 };
-
 const VIDEOS = [
-  { id: 'v1', title: 'Meine Woche 8: was mir durchs Reha-Loch geholfen hat', by: 'Luca B.', dur: '2:40', phase: 2, verified: true, up: 142 },
-  { id: 'v2', title: 'So habe ich meine Übungen in den Alltag gebracht', by: 'Anna S.', dur: '3:15', phase: 2, verified: true, up: 98 },
-  { id: 'v3', title: 'Mein Weg zurück: Woche 1 bis Spiel 1', by: 'Luca B.', dur: '6:02', phase: 4, verified: true, up: 311, story: true },
-  { id: 'v4', title: 'Mein Warm-up seit dem Comeback', by: 'Anna S.', dur: '4:30', phase: 0, verified: true, up: 205, prevention: true },
-  { id: 'v5', title: 'Erster Lauf: meine Erfahrung', by: 'Jonas R.', dur: '2:05', phase: 3, verified: false, up: 77 },
-  { id: 'v6', title: 'Die ersten Tage nach der OP', by: 'Lea M.', dur: '1:50', phase: 1, verified: false, up: 64 }
+  { id: 'v1', title: 'Was mir durchs Reha-Loch geholfen hat', by: 'Luca B.', av: 'LB', c: 'c1', mentor: true, dur: '2:40', phase: 2, wm: 'W8', g: 'g-a' },
+  { id: 'v2', title: 'Übungen im Alltag: meine Routine', by: 'Anna S.', av: 'AS', c: 'c4', mentor: true, dur: '3:15', phase: 2, wm: 'W10', g: 'g-b' },
+  { id: 'v3', title: 'Mein Weg zurück: Woche 1 bis Spiel 1', by: 'Luca B.', av: 'LB', c: 'c1', mentor: true, dur: '6:02', phase: 4, wm: 'W38', g: 'g-f', story: true },
+  { id: 'v4', title: 'Mein Warm-up seit dem Comeback', by: 'Anna S.', av: 'AS', c: 'c4', mentor: true, dur: '4:30', phase: 0, wm: 'FIT', g: 'g-c', prevention: true },
+  { id: 'v5', title: 'Erster Lauf: so war es', by: 'Jonas R.', av: 'JR', c: 'c2', dur: '2:05', phase: 3, wm: 'W12', g: 'g-d' },
+  { id: 'v6', title: 'Die ersten Tage nach der OP', by: 'Lea M.', av: 'LM', c: 'c3', dur: '1:50', phase: 1, wm: 'W1', g: 'g-e' },
+  { id: 'v7', title: 'Zurück im Team: was ich anders mache', by: 'Mia K.', av: 'MK', c: 'c5', mentor: true, dur: '3:48', phase: 2, wm: 'W9', g: 'g-d' }
 ];
 
-const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const app = document.getElementById('app');
+const av = (t, c, cls = '') => `<div class="av ${c} ${cls}">${t}</div>`;
 
 function topBar() {
-  return `<div class="top"><div class="brand"><span class="ring" aria-hidden="true"></span>Comeback</div>
-    <button class="icon-btn" aria-label="Benachrichtigungen" data-a="toast" data-msg="Luca hat auf deine Frage geantwortet">${I.bell}<span class="dot"></span></button></div>`;
+  const p = phaseOf(S.week);
+  return `<div class="top">
+    <div class="hello">${av('SK', 'c1', 'online')}<div><b>Hey Sara</b><span>Woche ${S.week} · Phase ${p.id}: ${p.name}</span></div></div>
+    <div class="row" style="gap:8px"><span class="streak" title="Wochen-Streak">${I.flame}${S.streak}</span>
+    <button class="icon-btn" aria-label="Benachrichtigungen" data-a="toast" data-msg="Luca hat auf deine Frage geantwortet">${I.bell}<span class="dot"></span></button></div></div>`;
 }
 
-/* ---------- Onboarding ---------- */
+/* Onboarding */
 function onboarding() {
   const st = S.step;
   const dots = `<div class="dots">${[1,2,3].map(i => `<i class="${st >= i ? 'on' : ''}"></i>`).join('')}</div>`;
+  const back = `<div class="top"><button class="icon-btn" aria-label="Zurück" data-a="back">${I.back}</button><span class="eyebrow">Schritt ${st} von 3</span><span style="width:38px"></span></div>`;
   let body = '';
   if (st === 0) {
-    body = `<div class="welcome-art"><span class="ring" aria-hidden="true"></span></div>
-      <h1>Comeback ist ein <em>Teamsport.</em></h1>
-      <p class="muted">Finde Leute in genau deiner Reha-Woche, lerne von denen, die es zurück auf den Platz geschafft haben, und mach deinen Fortschritt sichtbar.</p>
+    body = `<div class="welcome"><div class="stack">${av('LB','c1')}${av('AS','c4')}${av('LM','c3')}${av('JR','c2')}</div>
+        <p style="font-weight:700">128 Verletzte sind gerade auf dem Weg zurück.</p></div>
+      <h1 class="disp">Comeback ist ein <em>Teamsport.</em></h1>
+      <p class="muted">Finde Leute in genau deiner Reha-Woche, lerne von denen, die es zurück aufs Feld geschafft haben, und mach jeden Fortschritt sichtbar.</p>
       <div class="foot"><button class="btn" data-a="next">Mein Comeback starten</button>
-      <p class="small muted" style="text-align:center;margin:0">Beta · Einladung über deinen Verein oder einen Mentor</p></div>`;
+      <p class="small muted" style="text-align:center">Beta · Einladung über deinen Verein oder eine*n Mentor*in</p></div>`;
   } else if (st === 1) {
     const inj = ['Kreuzband (ACL)', 'Meniskus', 'Sprunggelenk', 'Hamstring', 'Schulter'];
-    body = `${dots}<div><div class="eyebrow">Schritt 1 von 3</div><h1>Was ist <em>passiert?</em></h1></div>
-      <div class="chips">${inj.map((x, i) => `<button class="chip" ${i ? 'disabled' : ''} aria-pressed="${S.injury === x}" data-a="injury" data-v="${x}">${x}${i ? '<span class="soon">bald</span>' : ''}</button>`).join('')}</div>
-      <p class="small muted">In der Beta starten wir mit Kreuzband. Weitere Verletzungen folgen.</p>
-      <div class="foot"><button class="btn" data-a="next" ${S.injury ? '' : 'disabled'}>Weiter</button></div>`;
+    body = `${dots}<h1 class="disp">Was ist <em>passiert?</em></h1>
+      <div class="chips" style="flex-wrap:wrap;margin:0;padding:0">${inj.map((x, i) => `<button class="chip" ${i > 1 ? 'disabled' : ''} aria-pressed="${S.injury === x}" data-a="injury" data-v="${x}">${x}${i > 1 ? '<span class="soon">bald</span>' : ''}</button>`).join('')}</div>
+      <p class="small muted">Zum Start: Knieverletzungen. Weitere folgen.</p>
+      <div class="foot"><button class="btn" data-a="next">Weiter</button></div>`;
   } else if (st === 2) {
     const sports = ['Fussball', 'Handball', 'Unihockey', 'Basketball', 'Ski', 'Anderes'];
-    body = `${dots}<div><div class="eyebrow">Schritt 2 von 3</div><h1>Dein Sport und deine <em>Reha-Woche</em></h1></div>
-      <div class="chips">${sports.map(x => `<button class="chip" aria-pressed="${S.sport === x}" data-a="sport" data-v="${x}">${x}</button>`).join('')}</div>
-      <div class="card"><div class="row between"><span class="eyebrow">Wochen seit OP</span><span class="badge b-phase">Phase ${phaseOf(S.week).id}: ${phaseOf(S.week).name}</span></div>
-      <div class="bigval" id="wkval">${S.week}</div>
+    const p = phaseOf(S.week);
+    body = `${dots}<h1 class="disp">Dein Sport, deine <em>Woche</em></h1>
+      <div class="chips" style="flex-wrap:wrap;margin:0;padding:0">${sports.map(x => `<button class="chip" aria-pressed="${S.sport === x}" data-a="sport" data-v="${x}">${x}</button>`).join('')}</div>
+      <div class="card"><div class="row between"><span class="eyebrow">Wochen seit OP</span><span class="badge b-week" id="phb">Phase ${p.id}: ${p.name}</span></div>
+      <div class="bigval disp" id="wkval">${S.week}</div>
       <label for="wk" class="small muted">Woche einstellen</label>
       <input class="range" id="wk" type="range" min="0" max="40" value="${S.week}"></div>
-      <p class="small muted">Gesundheitsangaben sind freiwillig. Du entscheidest später, was andere sehen.</p>
-      <div class="foot"><button class="btn" data-a="next">Passende Gruppe finden</button></div>`;
+      <p class="small muted">Du entscheidest später, was andere sehen.</p>
+      <div class="foot"><button class="btn" data-a="next">Meine Crew finden</button></div>`;
   } else {
     const p = phaseOf(S.week);
-    body = `${dots}<div><div class="eyebrow">Schritt 3 von 3</div><h1>Das ist <em>dein Team.</em></h1></div>
-      <div class="card"><div class="eyebrow">Deine Gruppe</div>
-        <h2 style="font-family:var(--display);font-size:26px;text-transform:uppercase">Kreuzband · ${p.range}</h2>
-        <p class="small muted" style="margin:0">128 Mitglieder in Phase ${p.id}, 14 gerade online</p></div>
-      <div class="card"><div class="eyebrow">Reha-Buddies in deiner Woche</div>
-        ${[['LM', 'a3', 'Lea M.', 'Fussball · Woche 7'], ['JR', '', 'Jonas R.', 'Handball · Woche 9']].map(b => `
-        <div class="row between"><div class="row"><div class="av ${b[1]}">${b[0]}</div><div><div style="font-weight:700">${b[2]}</div><div class="small muted">${b[3]}</div></div></div>
-        <button class="act" data-a="buddy" aria-pressed="false">Verbinden</button></div>`).join('')}</div>
-      <div class="card"><div class="row"><div class="av a1">LB</div><div><div class="row" style="gap:6px"><b>Luca B.</b><span class="badge b-mentor">Mentor</span></div>
-        <div class="small muted">Kreuzband 2024, seit 6 Monaten zurück im Spiel</div></div></div>
-        <p class="body" style="margin:0">«Hey Sara, willkommen! Ich begleite deine Gruppe. Stell dich kurz vor, wir sind für dich da.»</p></div>
-      <div class="foot"><button class="btn" data-a="finish">Zur Gruppe</button></div>`;
+    body = `${dots}<h1 class="disp">Das ist <em>deine Crew.</em></h1>
+      <div class="hero" style="gap:10px"><span class="eyebrow">Deine Gruppe</span><div class="disp" style="font-size:38px">Phase ${p.id} · ${p.name}</div>
+        <div class="row"><div class="stack">${av('LM','c3')}${av('JR','c2')}${av('MK','c5')}${av('AS','c4')}</div><span style="font-weight:600;font-size:14px">128 Mitglieder · 14 online</span></div></div>
+      <div class="card"><span class="eyebrow">Reha-Buddies in deiner Woche</span>
+        ${[['LM','c3','Lea M.','Fussball · Woche 7'],['JR','c2','Jonas R.','Handball · Woche 9']].map(b => `
+        <div class="row between"><div class="row">${av(b[0], b[1], 'online')}<div><b>${b[2]}</b><div class="small muted">${b[3]}</div></div></div>
+        <button class="chip" style="background:var(--accent-soft);color:var(--accent)" data-a="buddy" aria-pressed="false">Verbinden</button></div>`).join('')}</div>
+      <div class="foot"><button class="btn" data-a="finish">Los geht's</button></div>`;
   }
-  app.innerHTML = `${st ? `<div class="top"><button class="icon-btn" aria-label="Zurück" data-a="back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="brand"><span class="ring" aria-hidden="true"></span>Comeback</div><span style="width:36px"></span></div>` : topBar()}<div class="ob">${body}</div>`;
+  app.innerHTML = `${st ? back : topBar()}<div class="ob">${body}</div>`;
   const r = document.getElementById('wk');
-  if (r) r.addEventListener('input', e => { S.week = +e.target.value; document.getElementById('wkval').textContent = S.week; const b = e.target.parentElement.querySelector('.badge'); const p = phaseOf(S.week); b.textContent = `Phase ${p.id}: ${p.name}`; });
+  if (r) r.addEventListener('input', e => { S.week = +e.target.value; document.getElementById('wkval').textContent = S.week; const p = phaseOf(S.week); document.getElementById('phb').textContent = `Phase ${p.id}: ${p.name}`; });
 }
 
-/* ---------- Tabs ---------- */
+/* Heute */
 function heute() {
-  const w = S.week, p = phaseOf(w);
-  const bars = PHASES.map(ph => {
-    if (w >= ph.to) return '<div class="ph done"></div>';
-    if (w >= ph.from) return `<div class="ph"><span class="fill" style="width:${Math.round((w - ph.from) / (ph.to - ph.from) * 100)}%"></span></div>`;
-    return '<div class="ph"></div>';
+  const w = S.week, p = phaseOf(w), C = 2 * Math.PI * 40, pct = Math.min(1, w / 38);
+  const segs = PHASES.map(ph => {
+    const cls = w >= ph.to ? 'done' : (w >= ph.from ? 'cur' : '');
+    const fill = cls === 'cur' ? `<b style="width:${Math.max(8, Math.round((w - ph.from) / (ph.to - ph.from) * 100))}%"></b>` : '';
+    return `<div class="seg ${cls}"><i>${fill}</i>${ph.name}</div>`;
   }).join('');
-  const nextIdx = MILESTONES.findIndex(m => m.w > w);
-  const ms = MILESTONES.map((m, i) => `<li class="ms ${m.w <= w ? 'done' : ''} ${i === nextIdx ? 'next' : ''}"><span class="b">${m.w <= w ? I.check : ''}</span>
-    <span class="t">${m.t}${i === nextIdx ? `<div class="small muted" style="font-weight:500">noch ${m.w - w} Wochen</div>` : ''}</span><span class="w">W${m.w}</span></li>`).join('');
+  const nextIdx = MILESTONES.findIndex(m => m.w > w), nx = MILESTONES[nextIdx];
+  const track = MILESTONES.map((m, i) => `${i ? `<span class="l ${m.w <= w || i === nextIdx ? 'done' : ''}"></span>` : ''}<span class="n ${m.w <= w ? 'done' : ''} ${i === nextIdx ? 'next' : ''}"></span>`).join('');
   return `
-  <div class="card" style="gap:14px">
-    <div class="week"><span class="num">${w}</span><span class="lbl">Woche<br><span class="muted" style="font-size:15px">Tag ${w * 7 + 2} · ${esc(S.injury)}</span></span></div>
-    <div class="phases">${bars}</div>
-    <div class="ph-labels">${PHASES.map(ph => `<span class="${ph.id === p.id ? 'cur' : ''}">${ph.name}</span>`).join('')}</div>
+  <section class="hero" aria-label="Dein Fortschritt">
+    <div class="row between" style="align-items:flex-start;position:relative">
+      <div style="display:flex;flex-direction:column;gap:6px"><span class="eyebrow">Dein Comeback</span>
+        <div class="disp big"><small>W</small>${w}</div>
+        <span class="sub">Tag ${w * 7 + 2} · ${esc(S.injury)}</span></div>
+      <div class="ring"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="9"/>
+        <circle cx="48" cy="48" r="40" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C * (1 - pct)).toFixed(1)}"/></svg>
+        <div class="lbl"><div><b>${Math.round(pct * 100)}%</b><span>bis zum<br>1. Spiel</span></div></div></div>
+    </div>
+    <div class="segs">${segs}</div>
+  </section>
+  <div class="card crew"><div class="row"><div class="stack">${av('LM','c3','sm')}${av('JR','c2','sm')}${av('LB','c1','sm')}${av('MK','c5','sm')}</div>
+    <p><b>14 online</b><span class="muted">Lea fragt etwas</span></p></div>
+    <button class="pill-btn" data-a="tab" data-v="gruppe">Zur Crew</button></div>
+  <div class="card">
+    <div class="row between"><span class="eyebrow">Wöchentlicher Check-in</span><span class="badge b-sun">${S.checkedIn ? 'Erledigt' : 'Hält deinen Streak'}</span></div>
+    ${S.checkedIn ? `<div class="done-note">${I.checkC}<div><b>Streak: ${S.streak} Wochen am Stück</b><div class="small muted">Dein Check-in ist in der Crew. Lea und Jonas waren auch schon da.</div></div></div>` : `
+    <p class="disp" style="font-size:26px">Wie fühlt sich dein Knie an?</p>
+    <div class="mood">${[1,2,3,4,5].map(n => `<button aria-pressed="${S.mood === n}" data-a="mood" data-v="${n}" aria-label="Gefühl ${n} von 5">${n}</button>`).join('')}</div>
+    <div class="row between small muted"><span>schwierig</span><span>richtig gut</span></div>
+    <button class="btn" data-a="checkin" ${S.mood ? '' : 'disabled'}>Check-in teilen</button>`}
   </div>
   <div class="card">
-    <div class="row between"><span class="eyebrow">Wöchentlicher Check-in</span><span class="badge b-mentor">Streak: ${S.checkedIn ? 8 : 7} Wochen</span></div>
-    ${S.checkedIn ? `<p style="margin:0">Danke! Dein Check-in ist in der Gruppe. Lea und Jonas sind diese Woche auch dabei.</p>` : `
-    <p style="margin:0;font-weight:600">Wie fühlt sich dein Knie diese Woche an?</p>
-    <div class="mood">${[1,2,3,4,5].map(n => `<button aria-pressed="${S.mood === n}" data-a="mood" data-v="${n}" aria-label="Stimmung ${n} von 5">${n}</button>`).join('')}</div>
-    <div class="row between small muted"><span>schwierig</span><span>richtig gut</span></div>
-    <button class="btn" data-a="checkin" ${S.mood ? '' : 'disabled'}>In der Gruppe teilen</button>`}
+    <div class="row between"><span class="eyebrow">Nächster Meilenstein</span><span class="small muted">noch ${nx.w - w} Wochen</span></div>
+    <p class="disp ms-big">${nx.t}</p>
+    <div class="track" aria-hidden="true">${track}</div>
+    <div class="tlabels"><span>OP</span><span>Woche ${nx.w}</span><span>Erstes Spiel</span></div>
   </div>
-  <div class="card"><span class="eyebrow">Meilensteine bis zum ersten Spiel</span><ol class="milestones">${ms}</ol></div>
   <div class="card story">
     <span class="eyebrow">Comeback der Woche</span>
-    <div class="q">«In Woche 9 wollte ich aufhören. Heute stehe ich wieder im Tor.»</div>
-    <div class="row"><div class="av a1">AS</div><div><b>Anna S.</b><div class="small" style="opacity:.75">Unihockey · 11 Monate bis zum ersten Spiel</div></div></div>
+    <p class="q">«In Woche 9 wollte ich aufhören. Heute stehe ich wieder im Tor.»</p>
+    <div class="row">${av('AS','c4')}<div><b>Anna S.</b><div class="small" style="opacity:.7">Unihockey · heute Mentorin</div></div></div>
     <button class="btn" data-a="tab" data-v="videos">Story ansehen</button>
-  </div>
-  <div class="card">
-    <span class="eyebrow">Return-to-Sport-Kriterien</span>
-    <ul class="criteria">
-      <li><span>Volle Streckung</span><span class="val ok">0° ${I.check}</span></li>
-      <li><span>Beugung</span><span class="val">115° / 135°</span><span class="meter"><span style="width:85%"></span></span></li>
-      <li><span>Kraft-Symmetrie (Quadrizeps)</span><span class="val">62% / 90%</span><span class="meter"><span style="width:69%"></span></span></li>
-      <li><span>Hop-Test</span><span class="val muted">ab Phase 3</span></li>
-    </ul>
-    <div class="note">Werte trägst du nach deinem Physio-Termin selbst ein. Comeback ersetzt keine medizinische Beratung.</div>
   </div>`;
 }
 
+/* Crew */
 function gruppe() {
   const p = phaseOf(S.week);
+  const R = [['stark', 'Stark', I.flame], ['kenn', 'Kenn ich', I.chat], ['danke', 'Danke', I.heart]];
   const posts = S.posts.map(x => `
   <article class="card post">
-    <div class="row"><div class="av ${x.cls}">${x.av}</div><div style="min-width:0">
-      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="who">${esc(x.who)}</span>
-      ${x.role === 'mentor' ? '<span class="badge b-mentor">Mentor</span>' : ''}${x.week != null ? `<span class="badge b-phase">Woche ${x.week}</span>` : ''}${x.milestone ? '<span class="badge b-mentor">Meilenstein</span>' : ''}</div>
+    <div class="row">${av(x.av, x.c)}<div style="min-width:0;flex:1">
+      <div class="row" style="gap:6px;flex-wrap:wrap"><span class="who">${esc(x.who)}</span>${x.mentor ? '<span class="badge b-mentor">Mentor</span>' : ''}${x.week != null ? `<span class="badge b-week">Woche ${x.week}</span>` : ''}</div>
       <div class="meta">${x.time}</div></div></div>
-    <p class="body">${esc(x.text)}</p>
-    ${x.answer ? `<div class="answer"><div class="row" style="gap:6px;margin-bottom:2px"><b>${x.answer.who}</b><span class="badge b-mentor">Mentor · zurück im Sport</span></div>${x.answer.text}</div>` : ''}
-    <div class="actions"><button class="act" aria-pressed="${x.voted}" data-a="vote" data-v="${x.id}">${I.up}${x.up}</button>
-    <button class="act" data-a="toast" data-msg="Antworten öffnen sich in der nächsten Version">${I.chat}${x.replies}</button></div>
+    ${x.milestone ? `<div class="mile"><span class="v">${x.milestone.v}</span><p>${esc(x.milestone.t)}</p></div>` : ''}
+    ${x.text ? `<p>${esc(x.text)}</p>` : ''}
+    ${x.reply ? `<div class="reply">${av(x.reply.av, x.reply.c, 'sm')}<div><div class="rn"><b>${x.reply.who}</b><span class="badge b-mentor">Mentor · zurück im Sport</span></div><p>${esc(x.reply.text)}</p></div></div>` : ''}
+    <div class="reacts">${R.map(r => `<button class="re" aria-pressed="${x.mine === r[0]}" data-a="react" data-v="${x.id}" data-r="${r[0]}">${r[2]}${r[1]} ${x.r[r[0]]}</button>`).join('')}</div>
   </article>`).join('');
+  const people = [['LB','c1','Luca','Mentor',0],['AS','c4','Anna','Mentorin',0],['LM','c3','Lea','',0],['JR','c2','Jonas','',0],['MK','c5','Mia','',1]];
   return `
-  <div><div class="eyebrow">Deine Gruppe · Phase ${p.id}</div>
-  <h1 style="font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1">Kreuzband · ${p.range}</h1>
-  <p class="small muted" style="margin:4px 0 0">128 Mitglieder · 14 online · 3 Mentoren</p></div>
-  <div class="hscroll">${['Alle', 'Fragen', 'Meilensteine', 'Mentoren'].map((c, i) => `<button class="chip" aria-pressed="${i === 0}">${c}</button>`).join('')}</div>
-  <form class="compose" id="compose"><label for="msg" class="small" style="position:absolute;left:-9999px">Beitrag schreiben</label>
-    <textarea id="msg" placeholder="Frage oder Fortschritt teilen…"></textarea><button class="btn" type="submit">Posten</button></form>
+  <div class="g-head"><span class="eyebrow">Deine Crew · Phase ${p.id}</span>
+    <h1 class="disp">Kreuzband ${p.name}</h1>
+    <div class="meta"><span>128 Mitglieder</span><span>·</span><span class="live">14 online</span><span>·</span><span>3 Mentor*innen</span></div></div>
+  <div class="stories" aria-label="Stories">
+    <button class="st" data-a="compose"><span class="add">${I.plus}</span>Deine Story</button>
+    ${people.map(s => `<button class="st" data-a="toast" data-msg="Story von ${s[2]} (Prototyp)"><span class="rg ${s[4] ? 'seen' : ''}">${av(s[0], s[1])}</span>${s[2]}${s[3] ? `<span class="tag">${s[3]}</span>` : ''}</button>`).join('')}
+  </div>
+  <div class="chips">${['Alle', 'Fragen', 'Meilensteine', 'Mentor*innen'].map((c, i) => `<button class="chip" aria-pressed="${i === 0}">${c}</button>`).join('')}</div>
+  <form class="compose" id="compose">${av('SK','c1','sm')}<label for="msg" style="position:absolute;left:-9999px">Beitrag schreiben</label>
+    <textarea id="msg" placeholder="Frage oder Fortschritt teilen…"></textarea><button class="send" type="submit" aria-label="Posten">${I.send}</button></form>
   ${posts}`;
 }
 
+/* Stories */
 function videos() {
   const p = phaseOf(S.week);
-  const filters = ['Meine Phase', 'Alle', 'Prävention', 'Comeback-Stories', 'Gespeichert'];
-  const list = VIDEOS.filter(v => {
-    const f = S.videoFilter;
+  const filters = ['Meine Phase', 'Alle', 'Prävention', 'Gespeichert'];
+  const feat = VIDEOS.find(v => v.story);
+  const list = VIDEOS.filter(v => !v.story).filter(v => {
+    const f = S.filter;
     if (f === 'Meine Phase') return v.phase === p.id;
     if (f === 'Prävention') return v.prevention;
-    if (f === 'Comeback-Stories') return v.story;
     if (f === 'Gespeichert') return S.saved.has(v.id);
     return true;
   });
+  const reel = v => `<button class="reel" data-a="toast" data-msg="Video wird abgespielt (Prototyp)" aria-label="${esc(v.title)} abspielen">
+      <span class="bgw ${v.g}"></span>
+      <div class="row between"><span class="wm disp">${v.wm}</span><span class="dur">${v.dur}</span></div>
+      <div><h3>${esc(v.title)}</h3><div class="by">${av(v.av, v.c, 'sm')}<span>${v.by}</span>${v.mentor ? '<span class="badge b-mentor" style="font-size:9px;padding:2px 6px">Mentor</span>' : ''}</div></div>
+    </button>`;
   return `
-  <div><div class="eyebrow">Comeback-Stories</div><h1 style="font-family:var(--display);font-size:30px;text-transform:uppercase;line-height:1">Erfahrungen für Woche ${S.week}</h1></div>
-  <div class="hscroll">${filters.map(f => `<button class="chip" aria-pressed="${S.videoFilter === f}" data-a="vf" data-v="${f}">${f}</button>`).join('')}</div>
-  ${list.length ? list.map(v => `
-  <article class="card">
-    <button class="thumb" style="border:0;padding:0" data-a="toast" data-msg="Video wird abgespielt (Prototyp)" aria-label="${v.title} abspielen">
-      <span class="play">${I.play}</span><span class="dur">${v.dur}</span>
-      <span class="ph-tag badge b-phase" style="background:var(--surface)">${v.phase ? 'Phase ' + v.phase : 'Prävention'}</span></button>
-    <div><b>${v.title}</b><div class="row small muted" style="gap:6px;margin-top:4px;flex-wrap:wrap">${v.by}
-      ${v.verified ? '<span class="badge b-mentor">Mentor</span>' : '<span class="badge b-phase">Community</span>'}</div></div>
-    <div class="actions"><span class="act">${I.up}${v.up}</span>
-      <button class="act" aria-pressed="${S.saved.has(v.id)}" data-a="save" data-v="${v.id}">${I.save}${S.saved.has(v.id) ? 'Gespeichert' : 'Speichern'}</button>
-</div>
-  </article>`).join('') : `<div class="card"><b>Noch nichts hier</b><p class="small muted" style="margin:0">Speichere Videos, um sie offline griffbereit zu haben.</p></div>`}`;
+  <div class="g-head"><span class="eyebrow">Comeback-Stories</span><h1 class="disp">Erfahrungen für Woche ${S.week}</h1></div>
+  <button class="feat" data-a="toast" data-msg="Story wird abgespielt (Prototyp)" aria-label="${esc(feat.title)} abspielen">
+    <span class="bgw g-a"></span><span class="wm">1→38</span>
+    <span class="badge b-sun" style="align-self:flex-start;margin-bottom:8px">Comeback der Woche</span>
+    <h2>${esc(feat.title)}</h2>
+    <div class="by row" style="gap:8px;margin-top:8px;font-size:13px;font-weight:600">${av(feat.av, feat.c, 'sm')}${feat.by} · ${feat.dur}</div>
+    <span class="playc">${I.play}</span>
+  </button>
+  <div class="chips">${filters.map(f => `<button class="chip" aria-pressed="${S.filter === f}" data-a="vf" data-v="${f}">${f}</button>`).join('')}</div>
+  ${list.length ? `<div class="grid2">${list.map(reel).join('')}</div>` : `<div class="card"><b>Noch nichts hier</b><p class="small muted">Speichere Stories, um sie wiederzufinden.</p></div>`}`;
 }
 
+/* Profil */
 function profil() {
-  const p = phaseOf(S.week);
-  const steps = [['Verletzt', 'done'], ['In Reha', 'cur'], ['Zurück im Sport', ''], ['Mentor', '']];
+  const steps = [['Verletzt', 'done'], ['In Reha', 'cur'], ['Zurück', ''], ['Mentor*in', '']];
   return `
-  <div class="card"><div class="row"><div class="av a1" style="width:56px;height:56px;font-size:19px">SK</div>
-    <div><h2 style="font-family:var(--display);font-size:26px;text-transform:uppercase;line-height:1">Sara K.</h2>
-    <div class="small muted">${esc(S.sport)} · ${esc(S.injury)} · Woche ${S.week}</div></div></div></div>
+  <div class="hero" style="flex-direction:row;align-items:center;gap:14px">${av('SK','c1','lg')}
+    <div style="position:relative"><div class="disp" style="font-size:34px">Sara K.</div><div class="sub">${esc(S.sport)} · ${esc(S.injury)} · Woche ${S.week}</div></div></div>
   <div class="card"><span class="eyebrow">Dein Weg</span>
-    <div class="path">${steps.map((s, i) => `<div class="step ${s[1]}"><span class="c">${s[1] === 'done' ? I.check : i + 1}</span>${s[0]}</div>`).join('')}</div>
-    <p class="small muted" style="margin:0">Nach deinem Comeback kannst du Mentorin werden und neue Mitglieder begleiten.</p></div>
+    <div class="path">${steps.map((s, i) => `<div class="step ${s[1]}"><span class="c">${s[1] === 'done' ? `<span style="width:16px;height:16px;display:block">${I.check}</span>` : i + 1}</span>${s[0]}</div>`).join('')}</div>
+    <p class="small muted">Nach deinem Comeback erhältst du das Mentor-Badge und begleitest die Nächsten.</p></div>
   <div class="card"><span class="eyebrow">Badges</span>
     <div class="badges">
-      <div class="bdg"><span class="n">8</span>Wochen dran</div>
-      <div class="bdg"><span class="n">${S.checkedIn ? 8 : 7}</span>Wochen-Streak</div>
-      <div class="bdg"><span class="n">12</span>Upvotes</div>
+      <div class="bdg"><span class="n">${S.week}</span>Wochen dran</div>
+      <div class="bdg"><span class="n">${S.streak}</span>Wochen-Streak</div>
+      <div class="bdg"><span class="n">12</span>Reaktionen</div>
       <div class="bdg locked"><span class="n">W12</span>Erster Lauf</div>
       <div class="bdg locked"><span class="n">W30</span>Training</div>
       <div class="bdg locked"><span class="n">W38</span>Mentor-Badge</div></div></div>
-  <div class="card"><span class="eyebrow">Reha-Buddies</span>
-    <div class="row"><div class="av a3">LM</div><div class="av">JR</div><div class="av a1">LB</div><span class="small muted">2 Buddies · 1 Mentor</span></div></div>
+  <div class="card"><span class="eyebrow">Deine Crew</span>
+    <div class="row"><div class="stack">${av('LM','c3')}${av('JR','c2')}${av('LB','c1')}</div><span class="small muted">2 Buddies · 1 Mentor</span></div></div>
   <div class="card"><span class="eyebrow">Privatsphäre</span>
-    <div class="row between"><label for="pub" style="font-weight:600">Verletzung und Reha-Woche öffentlich zeigen</label>
+    <div class="row between"><label for="pub" style="font-weight:600">Verletzung und Reha-Woche zeigen</label>
     <input type="checkbox" class="toggle" id="pub" ${S.publicDetails ? 'checked' : ''} data-a="pub"></div>
-    <p class="small muted" style="margin:0">Gesundheitsdaten werden nur mit deiner ausdrücklichen Einwilligung gespeichert (nDSG). Echtnamen sind nicht nötig.</p></div>
-  <button class="btn ghost" data-a="restart">Onboarding neu starten</button>`;
+    <p class="small muted">Gesundheitsdaten nur mit deiner ausdrücklichen Einwilligung (nDSG). Kein Echtname nötig.</p></div>
+  <button class="btn dark" data-a="restart">Onboarding neu starten</button>`;
 }
 
 function main() {
   const views = { heute, gruppe, videos, profil };
-  const tabs = [['heute', 'Heute', I.home], ['gruppe', 'Gruppe', I.group], ['videos', 'Videos', I.video], ['profil', 'Profil', I.user]];
+  const tab = (v, l, ic) => `<button class="tab" data-a="tab" data-v="${v}" aria-current="${S.tab === v}">${ic}${l}</button>`;
   app.innerHTML = `${topBar()}<main class="scroll" id="scroll">${views[S.tab]()}</main>
     ${S.toast ? `<div class="toast" role="status">${esc(S.toast)}</div>` : ''}
-    <nav class="tabs" aria-label="Hauptnavigation">${tabs.map(t => `<button class="tab" data-a="tab" data-v="${t[0]}" aria-current="${S.tab === t[0]}">${t[2]}${t[1]}</button>`).join('')}</nav>`;
+    <nav class="nav" aria-label="Hauptnavigation">${tab('heute', 'Heute', I.home)}${tab('gruppe', 'Crew', I.crew)}
+      <button class="fab" data-a="compose" aria-label="Beitrag erstellen">${I.plus}</button>
+      ${tab('videos', 'Stories', I.stories)}${tab('profil', 'Profil', I.user)}</nav>`;
   const f = document.getElementById('compose');
   if (f) f.addEventListener('submit', e => {
     e.preventDefault();
     const v = document.getElementById('msg').value.trim();
     if (!v) return;
-    S.posts.unshift({ id: 'u' + Date.now(), who: 'Sara K.', av: 'SK', cls: 'a1', role: null, week: S.week, time: 'gerade eben', text: v, up: 0, voted: false, replies: 0 });
+    S.posts.unshift({ id: 'u' + Date.now(), who: 'Sara K.', av: 'SK', c: 'c1', week: S.week, time: 'gerade eben', text: v, r: { stark: 0, kenn: 0, danke: 0 }, mine: null });
     flash('Gepostet. Luca wird benachrichtigt, falls niemand antwortet.');
   });
 }
 
 let tt;
-function flash(msg) { S.toast = msg; render(); clearTimeout(tt); tt = setTimeout(() => { S.toast = ''; render(true); }, 2600); }
-function render(keepScroll) {
+function flash(msg) { S.toast = msg; render(true); clearTimeout(tt); tt = setTimeout(() => { S.toast = ''; render(true); }, 2600); }
+function render(keep) {
   const sc = document.getElementById('scroll'); const top = sc ? sc.scrollTop : 0;
   S.screen === 'onboard' ? onboarding() : main();
-  const n = document.getElementById('scroll'); if (n && keepScroll) n.scrollTop = top;
+  const n = document.getElementById('scroll'); if (n && keep) n.scrollTop = top;
 }
 
 app.addEventListener('click', e => {
@@ -450,16 +539,22 @@ app.addEventListener('click', e => {
   else if (a === 'sport') { S.sport = v; render(); }
   else if (a === 'buddy') { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); b.textContent = on ? 'Verbunden' : 'Verbinden'; }
   else if (a === 'finish') { S.screen = 'app'; S.tab = 'gruppe'; render(); }
-  else if (a === 'tab') { S.tab = v; if (v === 'videos' && b.classList.contains('btn')) S.videoFilter = 'Comeback-Stories'; render(); }
+  else if (a === 'tab') { S.tab = v; render(); }
+  else if (a === 'compose') { S.tab = 'gruppe'; render(); const m = document.getElementById('msg'); if (m) m.focus(); }
   else if (a === 'mood') { S.mood = +v; render(true); }
   else if (a === 'checkin') {
-    S.checkedIn = true;
-    S.posts.unshift({ id: 'c' + Date.now(), who: 'Sara K.', av: 'SK', cls: 'a1', role: null, week: S.week, time: 'gerade eben', text: `Check-in Woche ${S.week}: Knie-Gefühl ${S.mood} von 5.`, up: 0, voted: false, replies: 0 });
-    flash('Check-in in der Gruppe geteilt');
+    S.checkedIn = true; S.streak++;
+    S.posts.unshift({ id: 'c' + Date.now(), who: 'Sara K.', av: 'SK', c: 'c1', week: S.week, time: 'gerade eben', text: `Check-in Woche ${S.week}: Knie-Gefühl ${S.mood} von 5.`, r: { stark: 0, kenn: 0, danke: 0 }, mine: null });
+    flash(`Streak: ${S.streak} Wochen. Stark!`);
   }
-  else if (a === 'vote') { const p = S.posts.find(x => x.id === v); p.voted = !p.voted; p.up += p.voted ? 1 : -1; render(true); }
-  else if (a === 'save') { S.saved.has(v) ? S.saved.delete(v) : S.saved.add(v); render(true); }
-  else if (a === 'vf') { S.videoFilter = v; render(true); }
+  else if (a === 'react') {
+    const p = S.posts.find(x => x.id === v), r = b.dataset.r;
+    if (p.mine) p.r[p.mine]--;
+    p.mine = p.mine === r ? null : r;
+    if (p.mine) p.r[p.mine]++;
+    render(true);
+  }
+  else if (a === 'vf') { S.filter = v; render(true); }
   else if (a === 'pub') { S.publicDetails = b.checked; }
   else if (a === 'toast') { flash(b.dataset.msg); }
   else if (a === 'restart') { S.screen = 'onboard'; S.step = 0; S.tab = 'heute'; render(); }
